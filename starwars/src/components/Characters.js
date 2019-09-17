@@ -1,13 +1,20 @@
 import React from 'react';
 import Character from './Character';
+import cutesy from 'styled-components';
 
+const FlexDiv = cutesy.div`
+    display: flex;
+    flex-wrap: wrap;
+`;
 
 const Characters = ({ charactersList }) => {
     // debugger
     return (
-        charactersList.map(icon => 
-            <Character name={icon.name}/>
-        )
+        <FlexDiv>
+            {charactersList.map(icon =>
+                <Character name={icon.name} />
+            )}
+        </FlexDiv>
     )
 }
 
