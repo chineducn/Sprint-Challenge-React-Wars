@@ -12,22 +12,18 @@ const CenterDiv = cutesy.div`
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
-  const [firstResultState, setFirst] = useState([]);
-  const [nextResultState, setNext] = useState([]);
+  const [resultState, setResult] = useState([]);
   const [currentApiState, setCurrentApi] = useState('https://swapi.co/api/people');
   const [nextApiState, setNextApi] = useState('');
-  // console.log(apiState);
-  // console.log(currentApiState);
-  // console.log(nextApiState);
+  const [previousApiState]
+
 
   // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
   // side effect in a component, you want to think about which state and/or props it should
   // sync up with, if any.
 
-  // const starwarsPeopleApi = "https://swapi.co/api/people";
   const nextPage = evt => {
     evt.preventDefault();
-    const newPage = [...nextResultState];
     setCurrentApi(nextApiState);
   }
 
@@ -39,17 +35,8 @@ const App = () => {
         const { results, next } = swapiYes['data'];
         // debugger
         // console.log(next);
-        setFirst(results);
+        setResult(results);
         setNextApi(next);
-        axios.get(next)
-          .then(nextYes => {
-            // debugger
-            const { results } = nextYes['data'];
-            setNext(results);
-          })
-
-
-
       })
 
 
@@ -58,7 +45,7 @@ const App = () => {
   return (
     <CenterDiv className="App">
       <h1 className="Header">React Wars</h1>
-      <Characters charactersList={firstResultState} />
+      <Characters charactersList={resultState} />
       <button onClick={nextPage}>Next</button>
     </CenterDiv>
   );
