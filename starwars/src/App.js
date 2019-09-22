@@ -15,7 +15,7 @@ const App = () => {
   const [resultState, setResult] = useState([]);
   const [currentApiState, setCurrentApi] = useState('https://swapi.co/api/people');
   const [nextApiState, setNextApi] = useState('');
-  const [previousApiState]
+  const [previousApiState, setPreviousApi] = useState('');
 
 
   // Fetch characters from the star wars api in an effect hook. Remember, anytime you have a 
@@ -27,16 +27,22 @@ const App = () => {
     setCurrentApi(nextApiState);
   }
 
+  const previousPage = evt => {
+    evt.preventDefault();
+    setCurrentApi(previousApiState);
+  }
+
 
   useEffect(() => {
     axios.get(currentApiState)
       .then(swapiYes => {
         // debugger
-        const { results, next } = swapiYes['data'];
+        const { results, next, previous } = swapiYes['data'];
         // debugger
         // console.log(next);
         setResult(results);
         setNextApi(next);
+        setPreviousApi(previous);
       })
 
 
@@ -46,6 +52,7 @@ const App = () => {
     <CenterDiv className="App">
       <h1 className="Header">React Wars</h1>
       <Characters charactersList={resultState} />
+      <button onClick={previousPage}>Previous</button>
       <button onClick={nextPage}>Next</button>
     </CenterDiv>
   );
