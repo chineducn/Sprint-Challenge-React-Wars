@@ -32,6 +32,11 @@ const App = () => {
     setCurrentApi(previousApiState);
   }
 
+  const isDisabled = (api) => {
+    if (api) { return false }
+    return true
+  }
+
 
   useEffect(() => {
     axios.get(currentApiState)
@@ -52,8 +57,8 @@ const App = () => {
     <CenterDiv className="App">
       <h1 className="Header">React Wars</h1>
       <Characters charactersList={resultState} />
-      <button onClick={previousPage}>Previous</button>
-      <button onClick={nextPage}>Next</button>
+      <button disabled={isDisabled(previousApiState)} onClick={previousPage}>Previous</button>
+      <button disabled={isDisabled(nextApiState)} onClick={nextPage}>Next</button>
     </CenterDiv>
   );
 
