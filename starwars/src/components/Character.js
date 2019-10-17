@@ -7,11 +7,15 @@ const CoolDiv = cutesy.div`
     font-style: italic;
     border: 2px solid black;
     margin: 3px;
-    width: 25%;
+    width: 20%;
 `;
 
-const Character = ({ name }) => {
-    return <CoolDiv>{name}</CoolDiv>
+const Character = ({ name, gender }) => {
+    return <CoolDiv>
+        <p>Name: {name}</p>
+        <p>Gender: {gender}</p>
+
+    </CoolDiv>
 };
 
 
