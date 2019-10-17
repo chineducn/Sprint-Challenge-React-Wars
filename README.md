@@ -26,11 +26,19 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] What is React JS and what problems does it try and solve? Support your answer with concepts introduced in class and from your personal research on the web.
 
+React works towards making the rendering of the UI easier and faster. One way it makes it easier is through the use of components that are like building blocks consisting of HTML, CSS and JavaScript that are reusable. Faster rendering can be done using state and the virtual DOM where changes that don't require the page to reload result in a change in only a component, element as the need arises. 
+
 - [ ] What does it mean to _think_ in react?
+
+It means to visualize the UI in such a way that it everything on the page is a piece of reusable code.
 
 - [ ] Describe state.
 
+State is a JavaScript object that stores a component's dynamic data. State works only within the scope of the component.
+
 - [ ] Describe props.
+
+Props is a JavaScript object thats serves as a means to pass data from one component to another.
 
 - [ ] What are side effects, and how do you sync effects in a React component to state or prop changes?
 
